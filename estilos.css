@@ -1,0 +1,330 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --vino: #8c292e;
+    --rojo: #a93636;
+    --crema: #fffaf4;
+    --texto: #513536;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 14px;
+    background: #211719;
+    font-family: 'Poppins', sans-serif;
+    color: var(--texto);
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+}
+
+.tarjeta {
+    position: relative;
+    width: 100%;
+    min-height: 490px;
+    padding: 65px 45px;
+    overflow: hidden;
+    background: var(--crema);
+    border: 2px solid #b77b78;
+    outline: 1px solid #b77b78;
+    outline-offset: -9px;
+    border-radius: 4px;
+    box-shadow: 0 18px 55px #00000045;
+    animation: aparecer 0.8s ease;
+}
+
+/* Marco decorativo */
+
+.tarjeta::before {
+    content: "";
+    position: absolute;
+    inset: 16px;
+    border: 2px solid #a95859;
+    border-radius: 35px 15px 38px 18px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.tarjeta::after {
+    content: "";
+    position: absolute;
+    inset: 22px;
+    border: 1px dashed #c99a92;
+    border-radius: 20px 35px 18px 38px;
+    pointer-events: none;
+}
+
+.contenido-inicial,
+.contenido-carta {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.contenido-inicial {
+    padding-top: 15px;
+}
+
+.moño {
+    position: absolute;
+    z-index: 3;
+    top: 25px;
+    left: 22px;
+    font-size: clamp(45px, 8vw, 85px);
+    transform: rotate(-15deg);
+    filter: drop-shadow(0 3px 2px #7e222833);
+}
+
+.flores {
+    position: absolute;
+    z-index: 3;
+    right: 22px;
+    bottom: 30px;
+    font-size: clamp(40px, 7vw, 72px);
+    transform: rotate(8deg);
+}
+
+.gatito {
+    width: 115px;
+    height: 145px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 48% 48% 35% 35%;
+    margin-bottom: 12px;
+    animation: flotar 3s ease-in-out infinite;
+}
+
+h1,
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: #71343a;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 9px;
+}
+
+.pregunta {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.botones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.boton {
+    border: none;
+    min-width: 92px;
+    padding: 13px 25px;
+    border-radius: 30px;
+    background: var(--rojo);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #6c292b, 0 7px 12px #00000020;
+    transition: all 0.2s ease;
+}
+
+.boton:hover {
+    background: #7e242b;
+    transform: translateY(-3px);
+}
+
+.boton:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 0 #6c292b;
+}
+
+.boton-no {
+    position: relative;
+}
+
+.mensaje-no {
+    min-height: 25px;
+    margin-top: 22px;
+    font-size: 13px;
+    color: #9a4248;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.mensaje-no.visible {
+    opacity: 1;
+}
+
+.firma {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    text-align: center;
+    color: #a76d6a;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* Carta */
+
+.carta {
+    padding: 60px 65px 45px;
+}
+
+.etiqueta {
+    color: #a56c6c;
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: clamp(30px, 5vw, 43px);
+    margin-bottom: 10px;
+}
+
+h2 span {
+    color: #b34a50;
+}
+
+.separador {
+    color: #a43a42;
+    margin: 8px 0 25px;
+    letter-spacing: 9px;
+}
+
+.texto-carta {
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.texto-carta p {
+    margin-bottom: 20px;
+}
+
+.final-carta {
+    margin-top: 28px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #8c353c;
+}
+
+.final-carta span {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 30px;
+}
+
+.boton-volver {
+    margin-top: 20px;
+}
+
+.oculto {
+    display: none;
+}
+
+/* Animaciones */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+/* Adaptación para celulares */
+
+@media (max-width: 600px) {
+    body {
+        padding: 18px 12px;
+    }
+
+    .tarjeta {
+        min-height: 490px;
+        padding: 55px 25px;
+    }
+
+    .moño {
+        top: 22px;
+        left: 14px;
+    }
+
+    .flores {
+        right: 12px;
+        bottom: 20px;
+    }
+
+    .gatito {
+        width: 95px;
+        height: 120px;
+    }
+
+    .pregunta {
+        font-size: 18px;
+    }
+
+    .carta {
+        padding: 65px 28px 35px;
+    }
+
+    .texto-carta {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .texto-carta p {
+        margin-bottom: 17px;
+    }
+
+    .contenido-inicial {
+        padding-top: 30px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.oculto {
+    display: none !important;
+}
